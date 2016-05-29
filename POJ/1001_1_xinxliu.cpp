@@ -5,12 +5,12 @@ using namespace std;
 
 const int maxInput = 6;
 const int maxLength = maxInput * 25 + 1;
-
+const int INVALID_POS = -1;
 
 void output(char* s,int dotPos,int n,int max) {
 	const int length = max - 1;
 	int offset;
-	if (dotPos == 10) {
+	if (dotPos == INVALID_POS) {
 		offset = 0;
 	}
 	else {
@@ -48,7 +48,7 @@ void output(char* s,int dotPos,int n,int max) {
 	}
 	
 	//打印小数点
-	if (offset >= 1&& dotPos != 10) {
+	if (offset >= 1&& dotPos != INVALID_POS) {
 		cout << ".";
 		for (int i = offset - 1; i >= endPoint;--i) {
 			cout << char(s[i] + '0');
@@ -66,7 +66,7 @@ int main() {
 		const int maxLen = n * maxInput + 1;
 		//preprocessing
 		memset(result, 0, maxLength);
-		int dotPos = 10;
+		int dotPos = INVALID_POS;
 		char b[maxInput + 1];
 		memset(b, 0, 7);
 		int bIndex = 0;
